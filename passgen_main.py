@@ -1,4 +1,22 @@
 import random
+import os
+from cryptography.fernet import Fernet
+
+#Key logic
+def load_create_key():
+    filename = "secret.key"
+    if os.path.exists(filename) and os.path.getsize(filename) > 0:
+        key = open(filename, "rb").read()
+        return key
+    else:
+        key = Fernet.generate_key()
+        with open(filename, "wb") as key_file:
+            key_file.write(key)
+        return key
+
+#Key variables
+key = load_create_key()
+cipher = Fernet(key)
 
 #Library of possible characters
 LETTER_LIBRARY = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -23,11 +41,17 @@ for i in range(length):
     character = random.choice(combined_library)
     password += character
 
-#save password to file
+#Encrypt password file
+token = cipher.encrypt(password.encode())
+encrypted_password = token.decode()
+
+#Gather further user info
 website = input('What website is this password for?\n')
 username = input(f'What is your username for {website}?\n')
+
+#save password to file
 with open("passwords.txt", "a") as file:
-    file.write(f"{website} | {username} | {password}\n")
+    file.write(f"{website} | {username} | {encrypted_password}\n")
 
 #display
-print(f"Your password for {website} has been successfully saved as {password}!")
+print(f"Your password for {website} has been saved securely!")
