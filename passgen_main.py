@@ -8,12 +8,12 @@ SYMBOL_LIBRARY = '-/:;$&@.,?!'
 #Combined library of possible characters
 combined_library = LETTER_LIBRARY + DIGIT_LIBRARY
 
-length = int(input('How many characters should be in your password?'))
+length = int(input('How many characters should be in your password?\n'))
 
 #password init
 password = ""
 
-symbols_true = input('Should your password use special characters? [Y] or [N]').upper()
+symbols_true = input('Should your password use special characters? [Y] or [N]\n').upper()
 
 if symbols_true == 'Y' or symbols_true == 'YES':
     combined_library += SYMBOL_LIBRARY
@@ -23,5 +23,11 @@ for i in range(length):
     character = random.choice(combined_library)
     password += character
 
+#save password to file
+website = input('What website is this password for?\n')
+username = input(f'What is your username for {website}?\n')
+with open("passwords.txt", "a") as file:
+    file.write(f"{website} | {username} | {password}\n")
+
 #display
-print(password)
+print(f"Your password for {website} has been successfully saved as {password}!")
