@@ -3,7 +3,7 @@ a password generator
 
 v2.0 
 Added decryption function
-Added ability to search and retreieve passwords
+Added ability to search and retrieve passwords
 
 v1.3
 Added encryption function
