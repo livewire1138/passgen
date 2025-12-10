@@ -1,6 +1,8 @@
 # passgen
 a password generator
 
+WARNING: This uses simple encryption for storage, not hashing. It is not for real-world use at this time. 
+
 v2.0 
 Added decryption function
 Added ability to search and retrieve passwords
