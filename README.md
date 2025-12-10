@@ -1,4 +1,19 @@
 # passgen
-A basic password generator as I learn Python
+a password generator
 
-Currently encrypts passwords to file, but does not yet include ability for user to decrypt passwords. 
+v2.0 
+Added decryption function
+Added ability to search and retreieve passwords
+
+v1.3
+Added encryption function
+Streamlined key generation
+
+v1.2
+Added writing passwords to file
+
+V1.1
+Updated password parameter choices for length and complexity
+
+V1.1
+Inital release
